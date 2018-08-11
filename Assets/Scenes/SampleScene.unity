@@ -157,6 +157,11 @@ Prefab:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1908996005}
+    - target: {fileID: 114990957254756064, guid: 1b21e519a00cf7f4b8bc19aae82ac205,
+        type: 2}
+      propertyPath: palabrasClaves.Array.data[0]
+      value: HISTORIA
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b21e519a00cf7f4b8bc19aae82ac205, type: 2}
   m_IsPrefabParent: 0

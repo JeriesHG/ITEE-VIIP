@@ -56,4 +56,5 @@ MonoBehaviour:
   canvas: {fileID: 0}
   clip: {fileID: 0}
   gender: 
-  palabrasClaves: []
+  palabrasClaves:
+  - Historia

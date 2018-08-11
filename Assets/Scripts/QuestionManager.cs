@@ -20,7 +20,7 @@ public class QuestionManager : MonoBehaviour {
 	private KeywordRecognizer reconocedorDeVoz;
 
 	[SerializeField]
-	private string[] palabrasClaves;
+	private List<String> palabrasClaves;
 
 	private DictationRecognizer dictationRecognizer;
 
@@ -40,26 +40,33 @@ public class QuestionManager : MonoBehaviour {
 		gender = "Male";
 
 		dictationRecognizer = new DictationRecognizer ();
-		dictationRecognizer.DictationHypothesis += (text) => {
-			print(text);	
-		};
-
-		dictationRecognizer.DictationResult += (text, confidence) => {
-			print(text  + " - " + confidence);	
-		};
+		dictationRecognizer.DictationHypothesis += OnPhraseFound;
 		dictationRecognizer.Start ();
 
-		palabrasClaves = new string[]{"Historia", "Fundado", "Francia"};
-		reconocedorDeVoz = new KeywordRecognizer(palabrasClaves);
-		reconocedorDeVoz.OnPhraseRecognized += OnPhraseRecognized;
-
-		reconocedorDeVoz.Start ();
+		//palabrasClaves = new string[]{"Historia", "Fundado", "Francia"};
+		//reconocedorDeVoz = new KeywordRecognizer(palabrasClaves);
+		//reconocedorDeVoz.OnPhraseRecognized += OnPhraseRecognized;
+//		reconocedorDeVoz.Start ();
 
 		videoPlayer.loopPointReached += CheckOver;
 	}
 
+	private void OnPhraseFound(string text){
+		if(!videoPlayer.isPlaying){
+			foreach(string t in text.Split(" "[0])){
+				if(palabrasClaves.Contains(t.ToUpper())){
+					setupVideo(t);
+				}
+			}
+		}
+	}
+
 	private void OnPhraseRecognized(PhraseRecognizedEventArgs args)
 	{
+		setupVideo (args.text);
+	}
+
+	private void setupVideo(string text){
 		videoPlayer.enabled = true;
 		// Set mode to Audio Source.
 		videoPlayer.audioOutputMode = VideoAudioOutputMode.AudioSource;
@@ -69,7 +76,7 @@ public class QuestionManager : MonoBehaviour {
 		videoPlayer.EnableAudioTrack(0, true);
 		// ...and we set the audio source for this track
 		videoPlayer.SetTargetAudioSource(0, audioSource);
-		videoPlayer.url = String.Format(videoPath, gender, args.text);
+		videoPlayer.url = String.Format(videoPath, gender, text);
 
 		StartCoroutine (prepareAndPlayVideo ());
 	}
