@@ -157,11 +157,6 @@ Prefab:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1908996005}
-    - target: {fileID: 114990957254756064, guid: 1b21e519a00cf7f4b8bc19aae82ac205,
-        type: 2}
-      propertyPath: palabrasClaves.Array.data[0]
-      value: HISTORIA
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b21e519a00cf7f4b8bc19aae82ac205, type: 2}
   m_IsPrefabParent: 0
@@ -269,8 +264,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 416271331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.697, y: -0.115, z: -9.973913}
-  m_LocalScale: {x: 1.9467335, y: 3.3304183, z: 1}
+  m_LocalPosition: {x: -2.06, y: 0.11, z: -9.973913}
+  m_LocalScale: {x: 1.9467335, y: 3.2906625, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -324,11 +319,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224011551896834468, guid: 8ae788016270cf64a926080b697a01ba,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 224011551896834468, guid: 8ae788016270cf64a926080b697a01ba,
         type: 2}
       propertyPath: m_LocalPosition.x

@@ -51,11 +51,11 @@ public class QuestionManager : MonoBehaviour {
 		videoPlayer.loopPointReached += CheckOver;
 	}
 
-	private void OnPhraseFound(string text){
+	private void OnPhraseFound(string palabras){
 		if(!videoPlayer.isPlaying){
-			foreach(string t in text.Split(" "[0])){
-				if(palabrasClaves.Contains(t.ToUpper())){
-					setupVideo(t);
+			foreach(string palabra in palabras.Split(" "[0])){
+				if(palabrasClaves.Contains(palabra.ToLower())){
+					setupVideo(palabra);
 				}
 			}
 		}
@@ -76,7 +76,8 @@ public class QuestionManager : MonoBehaviour {
 		videoPlayer.EnableAudioTrack(0, true);
 		// ...and we set the audio source for this track
 		videoPlayer.SetTargetAudioSource(0, audioSource);
-		videoPlayer.url = String.Format(videoPath, gender, text);
+		videoPlayer.url = String.Format(videoPath, gender, text.ToLower());
+		print (videoPlayer.url);
 
 		StartCoroutine (prepareAndPlayVideo ());
 	}
